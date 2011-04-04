@@ -2,27 +2,27 @@ require 'spec_helper'
 
 describe AccountsController do
   describe "routing" do
-    it '/accounts to Accounts#index' do
+    it '/ to Accounts#index' do
       path = accounts_path
-      path.should == '/accounts'
+      path.should == '/'
       { :get => path }.should route_to(
         :controller => 'accounts',
         :action => 'index'
       )
     end
 
-    it '/accounts/new to Account#new' do
+    it '/new to Account#new' do
       path = new_account_path
-      path.should == '/accounts/new'
+      path.should == '/new'
       { :get => path }.should route_to(
         :controller => 'accounts',
         :action => 'new'
       )
     end
 
-    it '/accounts/:account_id to Account#show' do
+    it '/:account_id to Account#show' do
       path = account_path 'foocorp'
-      path.should == '/accounts/foocorp'
+      path.should == '/foocorp'
       { :get => path }.should route_to(
         :controller => 'accounts',
         :action => 'show',
@@ -30,9 +30,9 @@ describe AccountsController do
       )
     end
 
-    it '/accounts/:account_id/edit to Account#edit' do
+    it '/:account_id/edit to Account#edit' do
       path = edit_account_path 'foocorp'
-      path.should == '/accounts/foocorp/edit'
+      path.should == '/foocorp/edit'
       { :get => path }.should route_to(
         :controller => 'accounts',
         :action => 'edit',

@@ -2,19 +2,9 @@ require 'spec_helper'
 
 describe ProjectsController do
   describe "routing" do
-    it '/accounts/:account_id/projects to Projects#index' do
-      path = account_projects_path 'foocorp'
-      path.should == '/accounts/foocorp/projects'
-      { :get => path }.should route_to(
-        :controller => 'projects',
-        :action => 'index',
-        :account_id => 'foocorp'
-      )
-    end
-
-    it '/accounts/:account_id/projects/new to Projects#new' do
+    it '/:account_id/new to Projects#new' do
       path = new_account_project_path('foocorp')
-      path.should == '/accounts/foocorp/projects/new'
+      path.should == '/foocorp/new'
       { :get => path }.should route_to(
         :controller => 'projects',
         :action => 'new',
@@ -22,9 +12,9 @@ describe ProjectsController do
       )
     end
 
-    it '/accounts/:account_id/projects/:project_id to Projects#show' do
+    it '/:account_id/:project_id to Projects#show' do
       path = account_project_path 'foocorp', 'widgets'
-      path.should == '/accounts/foocorp/projects/widgets'
+      path.should == '/foocorp/widgets'
       { :get => path }.should route_to(
         :controller => 'projects',
         :action => 'show',
@@ -33,9 +23,9 @@ describe ProjectsController do
       )
     end
 
-    it '/accounts/:account_id/projects/:project_id/edit to Projects#edit' do
+    it '/:account_id/:project_id/edit to Projects#edit' do
       path = edit_account_project_path 'foocorp', 'widgets'
-      path.should == '/accounts/foocorp/projects/widgets/edit'
+      path.should == '/foocorp/widgets/edit'
       { :get => path }.should route_to(
         :controller => 'projects',
         :action => 'edit',
